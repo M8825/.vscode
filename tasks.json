@@ -1,0 +1,62 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+
+  // Run tests for ruby project.
+
+  "version": "2.0.0",
+  "tasks": [
+    { // Isolates and runs specs for function under cursor
+      "label": "Run method spec",
+      "type": "shell",
+      "command": "ruby .vscode/scripts.rb ${fileBasenameNoExtension} ${workspaceFolder} ${lineNumber}",
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    { // Runs specs for 
+      "label": "Run active file specs",
+      "type": "shell",
+      "command": "rspec ./spec/*${fileBasenameNoExtension}_spec.rb",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "Run All specs",
+      "type": "shell",
+      "command": "rspec ",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true
+      }
+    }
+  ]
+}
+
+
