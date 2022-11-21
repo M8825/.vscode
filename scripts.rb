@@ -19,8 +19,9 @@ bottom_line = ARGV[2].to_i
 rspec_search_line = `awk '/def/ && NR >= #{top_line} && NR <= #{bottom_line}' lib/#{f_name}.rb`.split("def")[-1]
 # Get rid of the parentheses and arguments after method name from lib/ file
 rspec_search_line = rspec_search_line[0...rspec_search_line.index("(")].strip
-# Construct arguments part for regex
-rspec_search_line =  'describe "' + '#?' + rspec_search_line + '[!?]?"'
+
+# Construct arguments part for regex. Match describe "method_name" in spec file
+rspec_search_line =  'describe "' + '#?' + rspec_search_line + '[!?]?.*"'
 
 
 #  
