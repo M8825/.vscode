@@ -25,7 +25,8 @@ rspec_search_line =  'describe [\'"]' + '\w*?#?' + rspec_search_line + '[!?]?.*[
 
 
 #  
-spec_file = "#{ARGV[1]}/spec/*" + f_name + '_spec.rb'
+spec_file = "#{ARGV[1]}/specs/*" + f_name + '_spec.rb'
+
 spec_file_path = `ls -la #{spec_file}`.split(' ')[-1].strip
 function_spec, err = cmd.run(:egrep, "-n", rspec_search_line, spec_file_path)
 # function_spec = system("grep -n \"describe \".#{cur_method_name}\" #{spec_file}")
